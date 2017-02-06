@@ -1,0 +1,32 @@
+{
+  "name": "terminator",
+  "version": "1.0.0",
+  "description": "Simple bash styled chat",
+  "main": "src\\index.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelerm/terminator.git"
+  },
+  "keywords": [
+    "chat",
+    "bash",
+    "shell",
+    "command"
+  ],
+  "author": "Miguel Roman <miguelerm@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miguelerm/terminator/issues"
+  },
+  "homepage": "https://github.com/miguelerm/terminator#readme",
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  },
+  "dependencies": {
+    "xterm": "^2.2.3"
+  }
+}
