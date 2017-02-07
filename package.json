@@ -2,9 +2,9 @@
   "name": "terminator",
   "version": "1.0.0",
   "description": "Simple bash styled chat",
-  "main": "src\\index.js",
+  "main": "./src/boot.js",
   "scripts": {
-    "start": "lite-server",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/miguelerm/terminator#readme",
   "devDependencies": {
-    "lite-server": "^2.2.2"
+    "electron": "^1.4.15"
   },
   "dependencies": {
     "xterm": "^2.2.3"
