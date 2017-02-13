@@ -90,4 +90,17 @@ header .controls .btn.close:hover {
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-family: monospace;
+    padding: 2px;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+.cursor {
+  animation: cursor-animation 0.3s steps(5, start) infinite alternate-reverse;
+}
+@keyframes cursor-animation {
+  from { color: rgba(255,255,255,1)}
+  to { color: rgba(255, 255, 255, 0);}
 }
