@@ -104,3 +104,7 @@ header .controls .btn.close:hover {
   from { color: rgba(255,255,255,1)}
   to { color: rgba(255, 255, 255, 0);}
 }
+
+.prompt {
+    margin-right: 5px;
+}
