@@ -1,5 +1,5 @@
 /src/**/*.js
 /src/**/*.map
-!/src/system.config.js
+!/src/systemjs.config.js
 /node_modules/
 npm-debug.log.*

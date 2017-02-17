@@ -8,7 +8,7 @@
     "build:watch": "tsc -p src/ -w",
     "prestart": "npm run build",
     "start": "concurrently \"npm run build:watch\" \"electron .\"",
-    "package": "electron-packager . terminator --platform=win32",
+    "package": "electron-packager ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
