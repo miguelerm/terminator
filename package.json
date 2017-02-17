@@ -5,7 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "build": "tsc -p src/",
-    "start": "electron .",
+    "build:watch": "tsc -p src/ -w",
+    "prestart": "npm run build",
+    "start": "concurrently \"npm run build:watch\" \"electron .\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
