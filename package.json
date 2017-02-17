@@ -8,6 +8,7 @@
     "build:watch": "tsc -p src/ -w",
     "prestart": "npm run build",
     "start": "concurrently \"npm run build:watch\" \"electron .\"",
+    "package": "electron-packager . terminator --platform=win32",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +33,7 @@
     "@types/node": "^7.0.5",
     "concurrently": "^3.3.0",
     "electron": "^1.4.15",
+    "electron-packager": "^8.5.1",
     "jasmine-core": "^2.5.2",
     "karma": "^1.4.1",
     "typescript": "^2.1.6"
