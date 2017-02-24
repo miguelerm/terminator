@@ -100,6 +100,7 @@ header .controls .btn.close:hover {
 .cursor {
   animation: cursor-animation 0.3s steps(5, start) infinite alternate-reverse;
 }
+
 @keyframes cursor-animation {
   from { color: rgba(255,255,255,1)}
   to { color: rgba(255, 255, 255, 0);}
@@ -107,4 +108,8 @@ header .controls .btn.close:hover {
 
 .prompt {
     margin-right: 5px;
+}
+
+line {
+    display: block;
 }

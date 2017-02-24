@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { LineModel } from "./line.model";
 
 @Component({
     selector: 'terminal',
-    template: `<div id="terminal">
-    <div class="linea">
-        <span class="prompt">&gt;</span><span class="comando"></span><span class="cursor">_</span>
-    </div>
-</div>`
+    template: `
+    <div id="terminal">
+        <line *ngFor="let line of lines" [model]="line"></line>
+    </div>`
 })
 export class TerminalComponent implements OnInit {
 
@@ -15,6 +15,8 @@ export class TerminalComponent implements OnInit {
     private linea: Element;
     private comando: HTMLElement;
     private cursor: Element;
+    
+    lines: LineModel[] = [];
 
     constructor(private terminalRef: ElementRef) {
         this.terminalHost = terminalRef.nativeElement;
@@ -22,43 +24,50 @@ export class TerminalComponent implements OnInit {
 
     @HostListener('document:keydown', ['$event'])
     onKeyDown(event: KeyboardEvent) {
-        var text = this.comando.innerText;
+
+        var lastLine = this.getLastLineOrDefault();
+        var text = lastLine.text;
         var key = event.key;
 
         if (key === "Backspace") {
             if (text.length > 0) {
                 text = text.substring(0, text.length - 1);
             }
-        } else if (key === "Enter") {
-            let div = document.createElement("div");
-            let p = document.createElement("span");
-            div.className = "linea";
-            p.className = "prompt";
-            p.innerHTML = "&gt;";
-            div.appendChild(p);
-            let c = document.createElement("span");
-            c.className = "comando";
-            div.appendChild(c);
-            this.linea.removeChild(this.cursor);
-            div.appendChild(this.cursor);
-            this.terminal.appendChild(div);
-            this.linea = div;
-            this.comando = c;
-            console.log("last command: ", text);
-            return;
         } else if (key.length === 1) {
             text += key;
+        } else if (key === "Enter") {
+
+            
+            this.addNewLine();
+            return;
+
+        } else {
+            console.log("unhandled key ", key);
         }
 
-        this.comando.innerText = text;
-        //console.log('> ', event.key);
+        lastLine.text = text;
+
     }
 
     ngOnInit() {
-        this.terminal = this.terminalHost.firstElementChild;
-        this.linea = this.terminal.getElementsByClassName("linea")[0];
-        this.comando = this.linea.getElementsByClassName("comando")[0] as HTMLElement;
-        this.cursor = this.linea.getElementsByClassName("cursor")[0];
+        this.addNewLine();
+    }
+
+    private addNewLine() {
+        var lastLine = this.getLastLine();
+
+        if (lastLine)
+            lastLine.current = false;
+
+        this.lines.push({current:true, text:''});
+    }
+
+    private getLastLineOrDefault(): LineModel {
+        return this.getLastLine() || {current: true, text: ''};
+    }
+    
+    private getLastLine(): LineModel | null {
+        return this.lines.length > 0 ? this.lines[this.lines.length -1] : null;
     }
 
 }
